@@ -1,0 +1,51 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "d60a8a2e74570ecf58a282ab7e2935cc",
+    "entities": [
+      {
+        "tableName": "University",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`slNo` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `clgid` INTEGER, `clgname` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "slNo",
+            "columnName": "slNo",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "college.id",
+            "columnName": "clgid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "college.name",
+            "columnName": "clgname",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "slNo"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"d60a8a2e74570ecf58a282ab7e2935cc\")"
+    ]
+  }
+}
